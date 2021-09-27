@@ -31,10 +31,8 @@ def main(args):
     if ftype not in set(['fastq', 'fasta']):
         if query[-1] == 'q':
             ftype = 'fastq'
-            print('...assuming filetype is fastq')
         elif query[-1] == 'a':
             ftype = 'fasta'
-            print('...assuming filetype is fasta')
         else:
             print('Please specify filetype -f')
             return(-1)

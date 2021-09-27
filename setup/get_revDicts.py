@@ -30,14 +30,15 @@ def main(args):
     rev_dict = []
     for i in range(len(data[0])):
         kash = list(data[0][i].split(' '))[:-1]
-        rev_dict.append(",".join([kash[0],";".join(kash[1::])]))
+        rev_dict.append([int(kash[0]),";".join(kash[1::])])
     rev_dict.sort()
 
     for i in range(division):
         dictName = 'revDicts/revDict'+str(i)+'.txt'
         with open(dictName, 'w') as f:
             for item in rev_dict[int(np.ceil(i*burst)):min(len(rev_dict), int(np.ceil((i+1)*burst)))]:
-                f.write("%s\n" % item)
+                item[0] = str(item[0])
+                f.write("%s\n" % ','.join(item))
             f.close()
                 
     with open('revDicts/revDict_companion.txt', 'w') as f:

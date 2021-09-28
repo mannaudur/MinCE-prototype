@@ -27,6 +27,9 @@ def main(args):
         kash = list(data[0][i].split(' '))[:-1]
         rev_dict.append(",".join(kash[0],";".join(kash[1::])))
     rev_dict.sort()
+    with open('MAX_HASH.txt') as max_hash:
+        max_hash.write(rev_dict[-1].split(",")[0])
+        max_hash.close()
 
     for i in range(10,100):
         dictName = 'revDicts/revDict'+str(i)+'.txt'

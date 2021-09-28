@@ -7,7 +7,7 @@ Usage:
 Options:
     -h --help   Show this screen.
     -M=<M>      Megasketch for big fastq files (1 to activate) [default: 0]
-    -t=<t>      Threshold t/1000 to show result [default: 990]
+    -t=<t>      Threshold t/1000 to consider result in top 5 [default: 850]
     -c=<c>      Candidate set limit [default: 1]
     -f=<f>      Filetype (fasta/fastq) [default: fasta]
 """
@@ -18,21 +18,21 @@ import subprocess
 from triangulate import find_genome
 
 def do_sketch(path, cand_limit, mega):
-        terminal_command = path+' -c '+cand_limit
-        if mega:
-            print('Creating Megasketch...')
-            terminal_command = 'smash/bin/sketch -Mt '+terminal_command
-            # ef beðið er um Megasketch, keyra nýja reikniritið:
-            #subprocess.run(terminal_command, shell=True, capture_output=True)
-            os.system(terminal_command)
-            print('Megasketch successful')
-        else:
-            print('Creating sketch...')
-            terminal_command = 'smash/bin/sketch -t '+terminal_command
-            # annars það gamla...
-            #subprocess.run(terminal_command, shell=True, capture_output=True)
-            os.system(terminal_command)
-            print('Sketch successful')
+    terminal_command = path+' -c '+cand_limit
+    if mega:
+        print('Creating Megasketch...')
+        terminal_command = 'smash/bin/sketch -Mt '+terminal_command
+        # ef beðið er um Megasketch, keyra nýja reikniritið:
+        subprocess.run(terminal_command, shell=True, capture_output=True)
+        #os.system(terminal_command)
+        print('Megasketch successful')
+    else:
+        print('Creating sketch...')
+        terminal_command = 'smash/bin/sketch -t '+terminal_command
+        # annars það gamla...
+        #subprocess.run(terminal_command, shell=True, capture_output=True)
+        os.system(terminal_command)
+        print('Sketch successful')
     
         
 def main(args):

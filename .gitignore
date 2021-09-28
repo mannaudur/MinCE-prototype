@@ -1,1 +1,8 @@
 *.DS_Store
+MinCE/smash/bin
+MinCE/reverseDicts
+MinCE/index_map.txt
+*.fna
+*.sketch
+MinCE/features
+*__pycache__

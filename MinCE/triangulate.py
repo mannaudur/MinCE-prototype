@@ -10,7 +10,7 @@ class find_genome:
         self.unknown = new_genome
         self.sketchname = self.unknown+'.sketch'
         self.threshold = int(threshold)
-        self.path_2_revDicts = 'revDicts/'
+        self.path_2_revDicts = 'reverseDicts/'
         self.path_2_atom_reference = 'index_map.txt'
         self.current = '10'
 
@@ -102,7 +102,8 @@ class find_genome:
                         # bætum atóminu í safnið, svo við tvítökum það ekki
                         finalist_atoms.add(self.atom_reference[index_of_genome][1])
                     
-        self.finalists.sort(key = lambda x: x[1], reverse = True)
+        self.results = sorted(self.finalists, key = lambda x: x[1], reverse = True)[0:5]
+
         return(0)
 
     def give_results(self):
@@ -113,13 +114,16 @@ class find_genome:
 
         print('\nResults for input genome '+self.unknown+'...\n\n')
         print('---------------------------------------------------------------------')
-        for i, finalist in enumerate(self.finalists):
+        for i, finalist in enumerate(self.results):
             # ef niðurstaðan kemur úr atómi...
             if finalist[2] != -1:
-                print(str(i+1)+':\t Atom ' + finalist[2] + ' with match at most ' + str(finalist[1]) + '/1000')
-                print('\t  Atom size: '+str(len(read_json('features/'+finalist[2]+'.atom.json')['members']))+'\n')
-                cmd = 'python3 deBruijn/solve_features.py ' + self.unknown + ' features/' + finalist[2] + '.atom.json -f '+self.ftype
-                subprocess.run(cmd, shell=True, capture_output=True)
+                size = str(len(read_json('features/'+finalist[2]+'.atom.json')['members']))
+                print(str(i+1)+':\n Atom ' + finalist[2] + ' of size '+size+' with match at most ' + str(finalist[1]) + '/1000')
+                if finalist[1] > 995:
+                    cmd = 'python3 deBruijn/solve_features.py ' + self.unknown + ' features/' + finalist[2] + '.atom.json -f '+self.ftype
+                    os.system(cmd)
+                else:
+                    print('\tAtom score too low to justify screening...')
             else:
                 print(str(i+1)+':\n Genome ' + finalist[0] + ' with match ' + str(finalist[1]) + '/1000')
         print('---------------------------------------------------------------------')

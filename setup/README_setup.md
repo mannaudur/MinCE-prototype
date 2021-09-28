@@ -10,33 +10,7 @@ Create another directory for sketches, such as 'toyset/toysketches/'.
 
 Edit massmash.sh to match your directory names and run it. This will take some time.
 
-<<<<<<< HEAD
 The run produces output based default values for smash, for example k-mer size k=31 and sketch size s=1000. This can be changed by editing massmash.sh based on the smash syntax.
-=======
-The run produces output based default values for smash. This can be changed by editing massmash.sh based on the smash syntax.
-
-
-
-Next transfer all names in your sketch directory to a .txt file, for example by piping. 
-
-It is recommended using find instead of ls, as it's buffer is larger.
-
-For example, 'find toyset/toysketches/ -name "*.sketch" > all.txt'.
-
-
-
-Now create a folder called 'atoms/' and run 'smash/bin/atom all.txt' from its parent directory. 
-
-This will produce outputs with a default threshold value of > 995/1000 for atom joining, but this can be changed with -l.
-
-Note that the paths in 'all.txt' will need to have a proper relevant path to the sketches, from the directory you run 'atom' from.
-
-
-
-This will create an extensionless file in 'atoms/' for every atom discovered in your dataset, as well as two reference files; 'hashlocator' and 'indices'. We want to add the extension .txt, svo run rename.sh in the parent directory of 'atoms/'.
-
-'hashlocator' contains every single hash value in your dataset and maps it to every sketch containing it.
->>>>>>> 1923129a2d26dce3e3957dd5ca6bc27be185bbce
 
 Next transfer all names in your sketch directory to a .txt file, for example by piping. It is recommended using find instead of ls, as it's buffer is larger: 'find toyset/toysketches/ -name "*.sketch" > all.txt'.
 

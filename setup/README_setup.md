@@ -39,8 +39,7 @@ Note that the paths in 'all.txt' will need to have a proper relevant path to the
 
 
 
-This will create a .txt file in 'atoms/' for every atom discovered in your dataset, as well as two reference files; 'hashlocator' 
-and 'indices'.
+This will create an extensionless file in 'atoms/' for every atom discovered in your dataset, as well as two reference files; 'hashlocator' and 'indices'. We want to add the extension .txt, svo run rename.sh in the parent directory of 'atoms/'.
 
 'hashlocator' contains every single hash value in your dataset and maps it to every sketch containing it.
 

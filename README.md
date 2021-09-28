@@ -1,7 +1,7 @@
 # MinCE
 ## Minhash with Cluster Extensions
 
-MinCE is a fast, memory efficient tool to identify species and strains of unknown sequencing data. It accepts fasta and fastq files and even large, unprocessed fastq files with several unknown genomes. It is based on Mash (https://github.com/marbl/Mash), which offers quick comparison between genomes, and extends its resolution to the point of being able to distinguish between strains within species. This is achieved by pre-processing the dataset on which it operates and as such, MinCE is dataset-specific.
+MinCE is a fast, memory efficient tool to identify species and strains of unknown sequencing data. It accepts fasta and fastq files and even large, unprocessed fastq files with several unknown genomes with the Megasketch -M option. It is based on Mash (https://github.com/marbl/Mash), which offers quick comparison between genomes, and extends its resolution to the point of being able to distinguish between strains within species. This is achieved by pre-processing the dataset on which it operates and as such, MinCE is dataset-specific.
 
 A pre-processed dataset of 285.339 genomes (254.025 Eubacteria and 4313 Archaea) is available at https://www.dropbox.com/s/uzxit07gt9bnhjy/MinCE_GTDB202_285K.zip?dl=0, though be advised that this is already present in the current Docker image. The dataset is based on the Genome Taxonomy Database 202 Release, but a few files are absent. For a description of the pre-processed dataset's content and our compilation of it, turn to https://www.dropbox.com/s/1rndrglvglmp10m/MinCE%20databank%20info.zip?dl=0. 
 

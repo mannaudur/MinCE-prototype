@@ -102,7 +102,7 @@ class find_genome:
                         # bætum atóminu í safnið, svo við tvítökum það ekki
                         finalist_atoms.add(self.atom_reference[index_of_genome][1])
                     
-        self.results = sorted(self.finalists, key = lambda x: x[1], reverse = True)[0:5]
+        self.results = sorted(self.finalists, key = lambda x: x[1], reverse = True)[0:min(5, len(self.finalists))]
 
         return(0)
 

@@ -63,6 +63,10 @@ class find_genome:
 
     def log_sharedKmers(self, val):
         # finnur staðinn með gildinu
+        try:
+            found = list(self.sub_revDict[0]).index(int(val))
+        except ValueError:
+            return
         found = list(self.sub_revDict[0]).index(int(val))
         # skilar öllu sem gildið bendir á (öllum rissum á formi index-map talna)
         for result in self.sub_revDict[1][found].split(';'):

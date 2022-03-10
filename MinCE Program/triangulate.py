@@ -1,7 +1,6 @@
 import os
 import collections
 import json
-import subprocess
 import pandas as pd
 
 class find_genome:
